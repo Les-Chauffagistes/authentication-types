@@ -34,7 +34,6 @@ jobs:
 
       - name: Generate Python models
         run: |
-          mkdir -p python/shared_types/
           datamodel-codegen \
             --input schema/api.yaml \
             --input-file-type openapi \
@@ -42,7 +41,6 @@ jobs:
 
       - name: Generate TypeScript types
         run: |
-          mkdir -p typescript/src/
           npx openapi-typescript schema/api.yaml \
             -o typescript/src/types.ts
 
