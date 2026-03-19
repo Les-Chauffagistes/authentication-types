@@ -25,17 +25,15 @@ jobs:
       - name: Setup Python
         run: |
           python3.13 -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-
+          venv/bin/pip install --upgrade pip
       - name: Install deps
         run: |
-          pip install datamodel-code-generator build
+          venv/bin/pip install datamodel-code-generator build
           npm ci
 
       - name: Generate Python models
         run: |
-          datamodel-codegen \
+          venv/bin/datamodel-codegen \
             --input schema/api.yaml \
             --input-file-type openapi \
             --output python/shared_types/models.py
@@ -48,7 +46,7 @@ jobs:
       - name: Build Python package
         run: |
           cd python
-          python -m build
+          venv/bin/python -m build
 
       - name: Pack TypeScript
         run: |
