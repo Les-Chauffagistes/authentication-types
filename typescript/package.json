@@ -1,5 +1,5 @@
 {
-  "name": "@chauffagsites/subscription-types",
+  "name": "@les-chauffagistes/subscription-types",
   "version": "0.1.0",
   "description": "Generated types from OpenAPI schema",
   "license": "UNLICENSED",
@@ -12,5 +12,9 @@
 
   "scripts": {
     "build": "echo \"no build step\""
+  },
+
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
