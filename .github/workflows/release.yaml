@@ -46,7 +46,7 @@ jobs:
       - name: Build Python package
         run: |
           cd python
-          venv/bin/python -m build
+          ../venv/bin/python -m build
 
       - name: Pack TypeScript
         run: |
