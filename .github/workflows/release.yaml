@@ -30,7 +30,7 @@ jobs:
           venv/bin/pip install --upgrade pip
       - name: Install deps
         run: |
-          venv/bin/pip install datamodel-code-generator build
+          venv/bin/pip install datamodel-code-generator build twine
           npm ci
 
       - name: Generate Python models
@@ -86,6 +86,7 @@ jobs:
           echo "VERSION=$new_version" >> $GITHUB_ENV
 
       - name: Check tag exists
+        id: tag_check
         run: |
           if git rev-parse "$VERSION" >/dev/null 2>&1; then
             echo "Tag $VERSION already exists, skipping release"
@@ -104,11 +105,23 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create tag
+        if: steps.tag_check.outputs.skip != 'true'
         run: |
           git tag $VERSION
           git push origin $VERSION
 
+      - name: Publish Python package
+        if: steps.tag_check.outputs.skip != 'true'
+        run: |
+          venv/bin/twine upload \
+            --repository-url http://localhost:5050/ \
+            python/dist/*
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+
       - name: Create release
+        if: steps.tag_check.outputs.skip != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.VERSION }}
