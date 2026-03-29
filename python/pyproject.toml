@@ -1,5 +1,5 @@
 [project]
-name = "subscription-types"
+name = "authentication-types"
 version = "0.1.0"
 dependencies = []
 

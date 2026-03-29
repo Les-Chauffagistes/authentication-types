@@ -1,5 +1,5 @@
 {
-  "name": "@les-chauffagistes/subscription-types",
+  "name": "@les-chauffagistes/authentication-types",
   "version": "0.1.0",
   "description": "Generated types from OpenAPI schema",
   "license": "UNLICENSED",
