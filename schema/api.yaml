@@ -28,7 +28,7 @@ components:
           type: string
     LNCallbackSuccessPayload:
       type: object
-      reaquired:
+      required:
         - status
         - code
       properties:
