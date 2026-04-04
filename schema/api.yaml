@@ -26,3 +26,16 @@ components:
           type: string
         k1:
           type: string
+    LNCallbackSuccessPayload:
+      type: object
+      reaquired:
+        - status
+        - refresh_token
+        - access_token
+      properties:
+        status:
+          type: string
+        refresh_token:
+          type: string
+        access_token:
+          type: string
