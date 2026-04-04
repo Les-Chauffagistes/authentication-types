@@ -30,12 +30,9 @@ components:
       type: object
       reaquired:
         - status
-        - refresh_token
-        - access_token
+        - code
       properties:
         status:
           type: string
-        refresh_token:
-          type: string
-        access_token:
+        code:
           type: string
