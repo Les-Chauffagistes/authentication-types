@@ -16,3 +16,13 @@ components:
           type: string
         pseudo:
           type: string
+    LNChallenge:
+      type: object
+      required:
+        - lnurl
+        - k1
+      properties:
+        lnurl:
+          type: string
+        k1:
+          type: string
