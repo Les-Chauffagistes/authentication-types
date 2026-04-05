@@ -36,3 +36,18 @@ components:
           type: string
         code:
           type: string
+    ExchangeCodePayload:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: enum
+          enum:
+            - onboarding
+            - logged_in
+        session_token:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        
